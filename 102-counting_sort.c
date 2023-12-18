@@ -12,7 +12,6 @@ void counting_sort(int *array, size_t size)
 
 	if (array == NULL || size <= 1)
 		return;
-
 	k = array[0];
 
 	for (i = 1; i < (int)size; i++)
@@ -39,13 +38,11 @@ void counting_sort(int *array, size_t size)
 		free(count), count = NULL;
 		return;
 	}
-
 	for (i = (int)size - 1; i >= 0; i--)
 	{
 		count[array[i]] = count[array[i]] - 1;
 		b[count[array[i]]] = array[i];
 	}
-
 	for (i = 0; i < (int)size; i++)
 		array[i] = b[i];
 
