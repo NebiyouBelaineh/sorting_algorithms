@@ -112,4 +112,6 @@ void merge_sort(int *array, size_t size)
 		return;
 	lb = 0, ub = (int)size - 1;
 	mergeSort(array, lb, ub, (int)size);
+	printf("[Done]: ");
+	print_array(array, size);
 }
