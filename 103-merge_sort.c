@@ -86,13 +86,12 @@ void merge(int *array, int lb, int mid, int ub)
 		}
 	}
 	else
-	{
 		while (i <= mid - 1)
 		{
 			sorted[k] = array[i];
 			i++, k++;
 		}
-	}
+	print_sub_arr(sorted, 0, size_s - 1, "Done");
 	for (k = 0; k < size_s; k++)
 		array[k + lb] = sorted[k];
 	free(sorted), sorted = NULL;
@@ -112,6 +111,4 @@ void merge_sort(int *array, size_t size)
 		return;
 	lb = 0, ub = (int)size - 1;
 	mergeSort(array, lb, ub, (int)size);
-	printf("[Done]: ");
-	print_array(array, size);
 }
