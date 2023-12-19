@@ -41,13 +41,13 @@ void counting_sort_rad(int *array, size_t size, int sd)
 	if (count == NULL)
 		return;
 
-	for (i = 0; i < 10; i++)
+	for (i = 0; i <= 9; i++)
 		count[i] = 0;
 
 	for (i = 0; i < (int)size; i++)
 		++count[(array[i] / sd) % 10];
 
-	for (i = 1; i < 10; i++)
+	for (i = 1; i <= 9; i++)
 		count[i] += count[i - 1];
 
 	b = malloc(sizeof(int) * (int)size);
