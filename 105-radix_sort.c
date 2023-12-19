@@ -10,15 +10,15 @@ void counting_sort_rad(int *array, size_t size, int sd);
 void radix_sort(int *array, size_t size)
 {
 	size_t i;
-	int max = array[0], sd;
+	int max, sd;
 
 	if (array == NULL || size <= 1)
 		return;
-
+	max = array[0];
 	for (i = 1; i < size; i++)
 		if (array[i] > max)
 			max = array[i];
-	for (sd = 1; max / sd > 0; sd = sd * 10)
+	for (sd = 1; (max / sd) > 0; sd = (sd * 10))
 	{
 		counting_sort_rad(array, size, sd);
 		print_array(array, size);
