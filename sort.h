@@ -34,5 +34,8 @@ void merge(int *A, int lb, int mid, int ub);
 void print_sub_arr(int *array, int lb, int ub, char *message);
 void swap(listint_t *node1, listint_t *node2);
 void heap_sort(int *array, size_t size);
+void bitonic_sort(int *array, size_t size);
+void print_sub_bitonic(int *array, int lb, int mid, int direction,
+size_t size);
 
 #endif /*SORT_H*/
