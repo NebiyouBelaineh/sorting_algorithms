@@ -39,5 +39,6 @@ void print_sub_bitonic(int *array, int lb, int mid, int direction,
 size_t size);
 void radix_sort(int *array, size_t size);
 void counting_sort_rad(int *array, size_t size, int sd);
+void quick_sort_hoare(int *array, size_t size);
 
 #endif /*SORT_H*/
