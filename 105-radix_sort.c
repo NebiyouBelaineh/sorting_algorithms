@@ -15,7 +15,7 @@ void radix_sort(int *array, size_t size)
 	if (array == NULL || size <= 1)
 		return;
 
-	for (i = 0; i < size; i++)
+	for (i = 1; i < size; i++)
 		if (array[i] > max)
 			max = array[i];
 	for (sd = 1; max / sd > 0; sd = sd * 10)
@@ -25,7 +25,6 @@ void radix_sort(int *array, size_t size)
 	}
 
 }
-
 
 /**
 * counting_sort_rad - sorts an array of integers in ascending
@@ -37,9 +36,6 @@ void radix_sort(int *array, size_t size)
 void counting_sort_rad(int *array, size_t size, int sd)
 {
 	int i, *b, *count;
-
-	if (array == NULL || size <= 1)
-		return;
 
 	count = malloc(sizeof(int) * 10);
 	if (count == NULL)
