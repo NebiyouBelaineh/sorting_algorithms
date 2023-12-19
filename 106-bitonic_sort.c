@@ -1,8 +1,8 @@
 #include "sort.h"
 void bitonicSort(int *array, int lb, int mid, int direction, size_t size);
-void bitonicMerge(int *array, int lb, int count, int direction, size_t size);
+void bitonicMerge(int *array, int lb, int count, int direction);
 void print_sub_bitonic(int *array, int lb, int mid, int direction,
-size_t size);
+					   size_t size);
 
 /**
  * bitonic_sort - sorts an array of integers in ascending order using
@@ -37,24 +37,25 @@ void bitonicSort(int *array, int lb, int mid, int direction, size_t size)
 	int k;
 	char *dxn;
 
-	if (mid <= 1)
-		return;
-	k = mid / 2;
+	if (mid > 1)
+	{
+		k = mid / 2;
 
-	if (direction)
-		dxn = "UP";
-	else
-		dxn = "DOWN";
-	/*Print what you are merging*/
-	printf("Merging [%d/%ld] (%s):\n", mid, size, dxn);
-	print_array(array + lb, mid);/*Print from lower bound to sub array bound*/
+		if (direction)
+			dxn = "UP";
+		else
+			dxn = "DOWN";
+		/*Print what you are merging*/
+		printf("Merging [%d/%ld] (%s):\n", mid, size, dxn);
+		print_array(array + lb, mid); /*Print from lower bound to sub array bound*/
 
-	bitonicSort(array, lb, k, direction, size);
-	bitonicSort(array, (lb + k), k, 0, size);
-	bitonicMerge(array, lb, mid, direction, size);
-	/*Print result after each merge*/
-	printf("Result [%d/%ld] (%s):\n", mid, size, dxn);
-	print_array(array + lb, mid);
+		bitonicSort(array, lb, k, 1, size);
+		bitonicSort(array, (lb + k), k, 0, size);
+		bitonicMerge(array, lb, mid, direction);
+		/*Print result after each merge*/
+		printf("Result [%d/%ld] (%s):\n", mid, size, dxn);
+		print_array(array + lb, mid);
+	}
 }
 
 /**
@@ -65,27 +66,27 @@ void bitonicSort(int *array, int lb, int mid, int direction, size_t size)
  * @count: highest index of the sub array
  * @direction: specifies if the array is to be sorted in ascending or
  * descending order
- * @size: size of the entire array
  */
-void bitonicMerge(int *array, int lb, int count, int direction, size_t size)
+void bitonicMerge(int *array, int lb, int count, int direction)
 {
 	int k, i, tmp;
 
-	if (count <= 1)
-		return;
-	k = count / 2;
-
-	for (i = lb; i < (lb + k); i++)
+	if (count > 1)
 	{
-		/*Swap is done */
-		if (direction == (array[i] > array[i + k]))
+		k = count / 2;
+
+		for (i = lb; i < (lb + k); i++)
 		{
-			/*Swap*/
-			tmp = array[i];
-			array[i] = array[i + k];
-			array[i + k] = tmp;
+			/*Swap is done */
+			if (direction == (array[i] > array[i + k]))
+			{
+				/*Swap*/
+				tmp = array[i];
+				array[i] = array[i + k];
+				array[i + k] = tmp;
+			}
 		}
+		bitonicMerge(array, lb, k, direction);
+		bitonicMerge(array, (lb + k), k, direction);
 	}
-	bitonicMerge(array, lb, k, direction, size);
-	bitonicMerge(array, (lb + k), k, direction, size);
 }
