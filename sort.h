@@ -32,5 +32,7 @@ void merge_sort(int *array, size_t size);
 void mergeSort(int *A, int lb, int ub, int size);
 void merge(int *A, int lb, int mid, int ub);
 void print_sub_arr(int *array, int lb, int ub, char *message);
+void swap(listint_t *node1, listint_t *node2);
+
 
 #endif /*SORT_H*/
