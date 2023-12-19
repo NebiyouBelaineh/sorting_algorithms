@@ -46,7 +46,7 @@ void bitonicSort(int *array, int lb, int mid, int direction, size_t size)
 	else
 		dxn = "DOWN";
 	/*Print what you are merging*/
-	printf("Merging[%d/%ld] (%s):\n", mid, size, dxn);
+	printf("Merging [%d/%ld] (%s):\n", mid, size, dxn);
 	print_array(array + lb, mid);/*Print from lower bound to sub array bound*/
 
 	bitonicSort(array, lb, k, direction, size);
